@@ -1,74 +1,72 @@
-﻿using System.Diagnostics.Metrics;
+﻿Employee employee1 = new Employee("Adam","Kowalski","29");
+Employee employee2 = new Employee("Marek","Kowalski","40");
+Employee employee3 = new Employee("Marita","Kowalska","35");
 
-int number = 154864;
-string numberAsString = number.ToString();
-char[] digit = numberAsString.ToArray();
+employee1.AddScore(7);
+employee1.AddScore(6);
+employee1.AddScore(8);
+employee1.AddScore(3);
+employee1.AddScore(4);
 
-Console.WriteLine("The result for number " + number);
-Console.WriteLine("");
-int counter0 = 0;
-int counter1 = 0;
-int counter2 = 0;
-int counter3 = 0;
-int counter4 = 0;
-int counter5 = 0;
-int counter6 = 0;
-int counter7 = 0;
-int counter8 = 0;
-int counter9 = 0;
+employee2.AddScore(5);
+employee2.AddScore(6);
+employee2.AddScore(9);
+employee2.AddScore(5);
+employee2.AddScore(2);
 
-foreach (char letter in digit)
+employee3.AddScore(3);
+employee3.AddScore(4);
+employee3.AddScore(10);
+employee3.AddScore(1);
+employee3.AddScore(5);
+
+var result1 = employee1.Result;
+var result2 = employee2.Result;
+var result3 = employee3.Result;
+
+
+List<Employee> employees = new List<Employee>()
 {
-    if (letter == '0')
-    { 
-        counter0++;
-    }
-    else if(letter == '1')
+    employee1, employee2, employee3
+};
+int maxResult = -1;
+Employee employeeWithMaxResult = null;
+
+foreach(var employee in employees)
+{
+    if(employee.Result > maxResult)
     {
-        counter1++;
-    }
-    else if(letter == '2')
-    {
-        counter2++;
-    }
-    else if(letter == '3')
-    {
-        counter3++;
-    }
-    else if(letter == '4')
-    {
-        counter4++;
-    }
-    else if(letter == '5')
-    {
-        counter5++;
-    }
-    else if(letter == '6')
-    {
-        counter6++;
-    }
-    else if(letter == '7')
-    {
-        counter7++;
-    }
-    else if(letter == '8')
-    {
-        counter8++;
-    }
-    else if(letter == '9')
-    {
-        counter9++;
+        employeeWithMaxResult = employee;
+        maxResult = employee.Result;
     }
 }
-Console.WriteLine("Digi 0 was used = " + counter0);
-Console.WriteLine("Digi 1 was used = " + counter1);
-Console.WriteLine("Digi 2 was used = " + counter2);
-Console.WriteLine("Digi 3 was used = " + counter3);
-Console.WriteLine("Digi 4 was used = " + counter4);
-Console.WriteLine("Digi 5 was used = " + counter5);
-Console.WriteLine("Digi 6 was used = " + counter6);
-Console.WriteLine("Digi 7 was used = " + counter7);
-Console.WriteLine("Digi 8 was used = " + counter8);
-Console.WriteLine("Digi 9 was used = " + counter9);
+Console.WriteLine("User with the highest result ");
+Console.WriteLine();
+Console.WriteLine(employeeWithMaxResult.Name + " " + employeeWithMaxResult.Surname + " " + employeeWithMaxResult.Age + " - with resoult of " + employeeWithMaxResult.Result);
+
 
 Console.ReadLine();
+class Employee
+{
+    private List<int> score = new List<int>();
+    public Employee(string name, string surname, string age)
+    {
+        this.Name = name;
+        this.Surname = surname;
+        this.Age = age;
+    }
+    public string Name { get; set; }
+    public string Surname { get; set;}
+    public string Age { get; set; }
+    public int Result
+    {
+        get
+        {
+            return this.score.Sum();
+        }
+    }
+    public void AddScore(int number)
+    {
+        this.score.Add(number);
+    }
+}
