@@ -1,4 +1,6 @@
-﻿Employee employee1 = new Employee("Adam","Kowalski","29");
+﻿using Challenge1App;
+
+Employee employee1 = new Employee("Adam","Kowalski","29");
 Employee employee2 = new Employee("Marek","Kowalski","40");
 Employee employee3 = new Employee("Marita","Kowalska","35");
 
@@ -46,27 +48,3 @@ Console.WriteLine(employeeWithMaxResult.Name + " " + employeeWithMaxResult.Surna
 
 
 Console.ReadLine();
-class Employee
-{
-    private List<int> score = new List<int>();
-    public Employee(string name, string surname, string age)
-    {
-        this.Name = name;
-        this.Surname = surname;
-        this.Age = age;
-    }
-    public string Name { get; set; }
-    public string Surname { get; set;}
-    public string Age { get; set; }
-    public int Result
-    {
-        get
-        {
-            return this.score.Sum();
-        }
-    }
-    public void AddScore(int number)
-    {
-        this.score.Add(number);
-    }
-}
