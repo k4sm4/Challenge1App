@@ -22,10 +22,6 @@
         public void AddScore(int number)
         {
             this.score.Add(number);
-        }
-        public void DeleteScore(int number)
-        {
-            this.score.Remove(number);
-        }
+        }        
     }
 }
