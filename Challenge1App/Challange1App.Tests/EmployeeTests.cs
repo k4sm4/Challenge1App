@@ -5,16 +5,16 @@ namespace Challange1App.Tests
     public class Tests
     {
         [Test]
-        public void WheneEmployeePointsAreCalculated_ShouldReturnedSum()
+        public void WheneEmployee1PointsAreCalculated_ShouldReturnedSum()
         {
-            var employee2 = new Employee("Adam", "Kowalski", "29");
-            employee2.AddScore(7);
-            employee2.AddScore(6);
-            employee2.AddScore(8);
-            employee2.AddScore(3);
-            employee2.AddScore(4);
+            var employee1 = new Employee("Adam", "Kowalski", "29");
+            employee1.AddScore(7);
+            employee1.AddScore(6);
+            employee1.AddScore(8);
+            employee1.AddScore(3);
+            employee1.AddScore(4);
             
-            var result = employee2.Result;
+            var result = employee1.Result;
 
             Assert.AreEqual(28, result);
         }
